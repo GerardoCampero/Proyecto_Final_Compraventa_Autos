@@ -3,7 +3,7 @@
 {% block contenido %}
 
 {% if errors %}
-    <p style="color: red;">Error al iniciar la sesión: {{errors}}</p>
+    <p style="color: red;">Error al registrar usuario: {{errors}}</p>
 {% endif %}
 
 <form method="post">
@@ -14,5 +14,9 @@
     <input type="submit" value="Login">
 
 </form>
+<p>
+    No tenés usuario?<a class="navbar-brand" href="{% url 'create' %}">Crealo acá</a>
+
+</p>
 
 {% endblock %}
