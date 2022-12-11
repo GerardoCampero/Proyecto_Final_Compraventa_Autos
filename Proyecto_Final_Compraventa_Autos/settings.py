@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'AppAutos', 
     'AppMotos', 
     'AppCamionetas', 
+    'AppUsuarios',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Auth Config
+
+LOGIN_URL = "/auth/login/"
+

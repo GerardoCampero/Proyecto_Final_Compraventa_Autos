@@ -5,4 +5,5 @@ from AppInicio.views import home
 
 urlpatterns = [
     path('', home, name='home'), 
+    path('inicio', home, name='inicio'), 
 ]
