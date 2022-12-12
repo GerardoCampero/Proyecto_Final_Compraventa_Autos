@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Compraventa Vehículos</title>
+        <title>{% block titulo %} {% endblock %}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -28,20 +28,6 @@
                 <a class="btn btn-dark" href="{% url 'login' %}">Login</a>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="text-center text-white">
-                            <!-- Page heading-->
-                            <h1 class="mb-5">Compraventa de Vehículos</h1>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         
         {% block contenido %}
         

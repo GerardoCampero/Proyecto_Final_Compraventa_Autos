@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from AppInicio.urls import home
+from django.conf.urls.static import static #Rogers
+import Proyecto_Final_Compraventa_Autos.settings as settings #Rogers
 
 
 urlpatterns = [
@@ -23,6 +25,9 @@ urlpatterns = [
     path('', home),
     path('pathapp/', include('AppUsuarios.urls')),
     path('pathapp/', include('AppInicio.urls')),
+    path('camionetas/', include('AppCamionetas.urls')), #Rogers
     
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
