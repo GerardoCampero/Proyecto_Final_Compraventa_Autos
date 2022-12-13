@@ -10,4 +10,4 @@ class Camionetas(models.Model):
     foto = models.ImageField(upload_to="camionetas")
 
     def __str__(self):
-        return f"Marca: {self.marca} || Modelo: {self.modelo} ||Año: {self.anio_fabricacion} || Kilometraje: {self.kilometraje} || Precio:$ {self.precio}"
+        return f"Marca: {self.marca} || Modelo: {self.modelo} ||Año: {self.anio_fabricacion} || Kilometraje: {self.kilometraje} || Precio:$ {self.precio} || Foto: {self.foto}"
