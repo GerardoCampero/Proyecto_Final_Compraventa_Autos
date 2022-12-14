@@ -5,6 +5,7 @@ from AppUsuarios.forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from AppUsuarios.models import avatar
+from AppInicio.views import imagen_avatar
 
 
 # Create your views here.
@@ -52,11 +53,7 @@ def editar_perfil(request):
 
     usuario = request.user
 
-    if request.user.is_authenticated:
-        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
-    else:
-        imagen_url = ''
+    imagen_url = imagen_avatar(request)
 
     if request.method == "POST":
         
@@ -88,11 +85,7 @@ def editar_perfil(request):
 @login_required
 def agregar_avatar(request):
 
-    if request.user.is_authenticated:
-        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
-    else:
-        imagen_url = ''
+    imagen_url = imagen_avatar(request)
     
     if request.method == "POST":
         
