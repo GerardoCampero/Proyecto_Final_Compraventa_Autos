@@ -1,8 +1,11 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login , authenticate 
-from AppUsuarios.forms import UserRegisterForm
+from AppUsuarios.forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from AppUsuarios.models import avatar
+
 
 # Create your views here.
 
@@ -43,4 +46,74 @@ def nuevo_usuario(request):
 
 
     return render(request, "AppUsuarios/create.html", {"form": formulario})
+    
+@login_required
+def editar_perfil(request):
+
+    usuario = request.user
+
+    if request.user.is_authenticated:
+        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ''
+
+    if request.method == "POST":
+        
+        formulario = UserEditForm(request.POST)
+
+    
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            
+
+            usuario.email = data["email"]
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+
+            usuario.save()
+
+            return redirect('inicio')
+        else:
+            return render(request,"AppUsuarios/edit.html", {"form": formulario, "errors": formulario.errors, "imagen_url": imagen_url} )
+
+
+    else:
+        formulario =  UserEditForm(initial = {"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name, "imagen_url": imagen_url})
+    
+    return render(request,"AppUsuarios/edit.html", {"form": formulario,  "imagen_url": imagen_url})
+
+
+@login_required
+def agregar_avatar(request):
+
+    if request.user.is_authenticated:
+        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ''
+    
+    if request.method == "POST":
+        
+        formulario = avatarFORM(request.POST, files=request.FILES)
+
+        if formulario.is_valid():
+
+            data = formulario.cleaned_data
+
+            usuario =  request.user
+
+            avatar_v = avatar(user=usuario, imagen=data["imagen"])
+            
+            avatar_v.save()
+
+            return redirect('inicio')
+        else:
+            return render(request,"AppUsuarios/avatar.html", {"form": formulario, "errors":formulario.errors, "imagen_url": imagen_url})
+    
+    formulario = avatarFORM()
+
+    return render(request,"AppUsuarios/avatar.html", {"form": formulario, "imagen_url": imagen_url})
+
     

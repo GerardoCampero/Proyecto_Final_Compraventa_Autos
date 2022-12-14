@@ -1,0 +1,23 @@
+{% extends 'AppInicio/index.html' %}
+
+{% block contenido %}
+
+{% if errors %}
+    <p style="color: red;">Error el editar usuario: {{errors}}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    
+
+    <input type="submit" value="Guardar">
+</form>
+
+<p>
+    <a class="navbar-brand" href="{% url 'Add-avatar' %}">Agregar Avatar</a>
+
+</p>
+
+{% endblock %}
