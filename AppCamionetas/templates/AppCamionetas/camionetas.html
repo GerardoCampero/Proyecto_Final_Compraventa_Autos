@@ -1,0 +1,49 @@
+{% extends 'AppInicio/base.html' %}
+
+{% block titulo %} CAMIONETAS EN VENTA {% endblock %}
+
+{% block contenido %}
+
+
+{% if form %}
+<h1>CREACION DE ANUNCIO DE VENTA</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form.as_p}}
+    <input type="submit" value="Guardar">
+    </form>
+{% endif %}
+
+
+
+{% if object_list %}
+
+<h1>LISTADO DE CAMIONETAS DISPONIBLES</h1>
+
+    {% for camioneta in object_list %}
+    
+        <p>Marca: {{camioneta.marca}}</p>
+        <p>Modelo: {{camioneta.modelo}}</p>
+        <p>Año de Fabricacion: {{camioneta.anio_fabricacion}}</p>
+        <p>Kilometraje: {{camioneta.kilometraje}}</p>
+        <p>Precio: {{camioneta.precio}}</p>
+        <img src="{{camioneta.foto.url}}" alt="">
+
+        
+        <a  href="{% url 'camionetas-eliminar' camioneta.pk %}" type="submit" class="btn btn-warning">Eliminar</a>
+        <a  href="{% url 'camionetas-editar' camioneta.pk %}" type="submit" class="btn btn-primary">Editar</a>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{formulario.as_p}}
+           
+        </form>
+        
+        
+    {% endfor %}
+{% endif %}
+
+
+
+{% endblock %}
