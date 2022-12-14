@@ -2,9 +2,17 @@
 
 {% block titulo %} INICIO DE CAMIONETAS {% endblock %}
 {% block contenido %}
+{% load static %}
 
-<h1>INDEX DE CAMIONETAS</h1>
-
-<a href=""></a>
+<h1 style="background-color: rgb(165, 169, 232);" >SECCION CAMIONETAS </h1>
+<nav class="navbar navbar-light bg-light static-top">
+    <div style="background-color: rgb(244, 218, 218)" class="container">
+        <a class="navbar-brand" href="{% url 'camionetas' %}">Crear Anuncio</a>
+        <a class="navbar-brand" href= "{% url 'camionetas-listado' %}">Ver todos los Anuncios</a> 
+        <a class="navbar-brand" href="">Buscar</a>
+        
+    </div>
+</nav>
+<img src="{% static 'AppInicio/assets/img/collage_camionetas.jpg' %}" alt="collage_camionetas" width="1500" height="500">
 
 {% endblock %}
