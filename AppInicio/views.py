@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from AppUsuarios.models import avatar
-
 # Create your views here.
 
 
@@ -14,8 +13,13 @@ def home(request):
 def imagen_avatar(request):
     
     if request.user.is_authenticated:
-        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")[0]
-        imagen_url = imagen_model.imagen.url
+        imagen_model = avatar.objects.filter(user=request.user.id).order_by("-id")
+
+        if len(imagen_model) > 0:
+            imagen_url = imagen_model[0].imagen.url
+        else:
+            imagen_url = "/media/avatares/avatar.jpg"  
+                 
     else:
         imagen_url = ''
 
