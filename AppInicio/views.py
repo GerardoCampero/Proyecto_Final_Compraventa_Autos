@@ -9,6 +9,10 @@ def home(request):
 
     return render(request, 'AppInicio/index.html',{"imagen_url": imagen_url})
 
+def about(request):
+    imagen_url = imagen_avatar(request)
+    return render(request, 'AppInicio/about.html', {"imagen_url": imagen_url})
+
 
 def imagen_avatar(request):
     
@@ -18,9 +22,10 @@ def imagen_avatar(request):
         if len(imagen_model) > 0:
             imagen_url = imagen_model[0].imagen.url
         else:
-            imagen_url = "/media/avatares/avatar.jpg"  
+            imagen_url = "/media/predet/avatar.jpg"  
                  
     else:
         imagen_url = ''
 
     return imagen_url
+
