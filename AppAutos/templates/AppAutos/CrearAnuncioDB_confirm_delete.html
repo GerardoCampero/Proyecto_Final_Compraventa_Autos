@@ -1,0 +1,14 @@
+{% extends 'AppAutos/index.html' %}
+
+{% block contenido %}
+
+<form  method="post">
+    {% csrf_token %}
+
+    <p><strong> Eliminar la publicación?: {{ object }} ?</strong></p>
+    <input class="btn btn-info btn-icon-split" type="submit" value="Si">
+    <a class="btn btn-success" href="{% url 'listado' %}">No</a>
+</form>
+
+
+{% endblock %}

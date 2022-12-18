@@ -1,0 +1,34 @@
+{% extends 'AppAutos/index.html' %}
+
+{% block contenido %}
+
+{% if object_list %}
+
+<h1>Publicaciones</h1>
+
+    {% for auto in object_list %}
+        
+        <img src="{{auto.foto.url}}" style="max-width: 250px;">
+        <p>Marca: {{auto.marca}}</p>
+        <p>Modelo: {{autos.modelo}}</p>
+        <p>Año de Fabricacion: {{auto.anio}}</p>
+        <p>Kilometraje: {{auto.kilometros}}</p>
+        <p>Precio: {{auto.precio}}</p>
+        
+
+        
+        <a  href="{% url 'eliminar' auto.pk %}" type="submit" class="btn btn-warning">Eliminar</a>
+        <a  href="{% url 'editar' auto.pk %}" type="submit" class="btn btn-primary">Editar</a>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{formulario.as_p}}
+           
+        </form>
+        
+        
+    {% endfor %}
+{% endif %}
+
+
+{% endblock %}
