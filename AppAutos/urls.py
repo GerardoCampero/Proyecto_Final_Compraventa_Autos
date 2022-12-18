@@ -7,4 +7,5 @@ urlpatterns = [
     path('listado/', AutoListView.as_view(), name='listado'),
     path('eliminar/<pk>', AutoDeleteView.as_view(), name='eliminar'),
     path('editar/<pk>', AutoUpdateView.as_view(), name='editar'),
+    path('buscar/', buscarAuto, name= 'buscar')
 ]

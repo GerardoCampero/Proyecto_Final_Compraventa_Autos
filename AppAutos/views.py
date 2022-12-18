@@ -40,16 +40,12 @@ class AutoListView(ListView):
     template_name = "AppAutos/visualizar.html"
 
 
-#def visualizar_auto(request):
-#
-#   imagen_url = imagen_avatar(request)
-#
-#   publicacion =  CrearAnuncioDB.objects.all()
-#
-#   
-#
-#   return render(request, "Appautos/visualizar.html",{"Publicaciones": publicacion,"imagen_url": imagen_url})
+def buscarAuto(request):
 
+    imagen_url = imagen_avatar(request)
 
+    if request.GET:
+        publicacion = CrearAnuncioDB.objects.filter(marca__icontains=request.GET["marca"])
+        return render(request, 'AppAutos/buscar.html', {"publicacion_list": publicacion, "imagen_url": imagen_url})
 
-
+    return render(request, 'AppAutos/buscar.html',{"publicacion_list": [], "imagen_url": imagen_url})

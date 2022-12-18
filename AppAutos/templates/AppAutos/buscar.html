@@ -1,0 +1,33 @@
+{% extends 'AppAutos/index.html' %}
+
+
+
+{% block contenido %}
+<p>
+<form action="" method="get">
+    Marca del auto: <input type="text" name="marca">
+    <input type="submit" value="Buscar!">
+</form>
+</p>
+
+
+{% if publicacion_list %}
+
+    <ul>
+        {% for auto in publicacion_list %}
+        <ul>
+            <img src="{{auto.foto.url}}" style="max-width: 250px;">
+            <p>Marca: {{auto.marca}}</p>
+            <p>Modelo: {{autos.modelo}}</p>
+            <p>Año de Fabricacion: {{auto.anio}}</p>
+            <p>Kilometraje: {{auto.kilometros}}</p>
+            <p>Precio: {{auto.precio}}</p>
+
+            <a  href="{% url 'eliminar' auto.pk %}" type="submit" class="btn btn-warning">Eliminar</a>
+            <a  href="{% url 'editar' auto.pk %}" type="submit" class="btn btn-primary">Editar</a>
+            <p></p>
+        </ul>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
