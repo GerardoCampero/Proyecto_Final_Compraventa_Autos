@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from AppCamionetas.models import Camionetas
 from django.urls import reverse_lazy
@@ -23,10 +23,16 @@ class CamionetaCreateView(LoginRequiredMixin, CreateView):
     template_name = "AppCamionetas/camionetas.html"
     fields = "__all__"
     success_url = reverse_lazy("camionetas-listado")
+    
 class CamionetaListView(ListView):
 
     model = Camionetas
     template_name = "AppCamionetas/camionetas.html"
+
+class CamionetasDetailView(DetailView):
+
+    model = Camionetas
+    template_name = "AppCamionetas/detalle.html"
 
 
 class CamionetasDeleteView(LoginRequiredMixin, DeleteView):
