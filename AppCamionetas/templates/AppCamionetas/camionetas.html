@@ -3,7 +3,14 @@
 {% block titulo %} CAMIONETAS EN VENTA {% endblock %}
 
 {% block contenido %}
-
+<nav class="navbar navbar-light bg-light static-top">
+    <div style="background-color: rgb(244, 218, 218)" class="container">
+        <a class="navbar-brand" href="{% url 'camionetas' %}">Crear Anuncio</a>
+        <a class="navbar-brand" href= "{% url 'camionetas-listado' %}">Ver todos los Anuncios</a> 
+        <a class="navbar-brand" href="{% url 'camionetas-buscar' %}">Buscar</a>
+        
+    </div>
+</nav>
 
 {% if form %}
 <h1>CREACION DE ANUNCIO DE VENTA</h1>

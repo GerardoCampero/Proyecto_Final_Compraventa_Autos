@@ -1,7 +1,9 @@
 {% extends 'AppInicio/base.html' %}
 
 {% block titulo %} INICIO DE CAMIONETAS {% endblock %}
+
 {% block contenido %}
+
 {% load static %}
 
 <h1 style="background-color: rgb(165, 169, 232);" >SECCION CAMIONETAS </h1>
@@ -9,7 +11,7 @@
     <div style="background-color: rgb(244, 218, 218)" class="container">
         <a class="navbar-brand" href="{% url 'camionetas' %}">Crear Anuncio</a>
         <a class="navbar-brand" href= "{% url 'camionetas-listado' %}">Ver todos los Anuncios</a> 
-        <a class="navbar-brand" href="">Buscar</a>
+        <a class="navbar-brand" href="{% url 'camionetas-buscar' %}">Buscar</a>
         
     </div>
 </nav>
