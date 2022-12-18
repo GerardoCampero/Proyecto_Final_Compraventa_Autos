@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from AppUsuarios.models import avatar
+
 # Create your views here.
 
 
@@ -25,7 +26,7 @@ def imagen_avatar(request):
             imagen_url = "/media/predet/avatar.jpg"  
                  
     else:
-        imagen_url = ''
+        imagen_url = "/media/avatares/avatar.jpg"
 
     return imagen_url
 
