@@ -21,3 +21,5 @@
 - Archivo Readme
 
 # link a video de funcionamiento de la web
+
+https://www.youtube.com/watch?v=8F9PHrxt2Gg
