@@ -10,8 +10,7 @@
 
     <p><strong> DESEA ELIMINAR EL REGISTRO: {{ object }} ?</strong></p>
     <button type="submit" class="btn btn-danger">CONFIRMAR</button>
-    <button href="camionestas-listado" class="btn btn-success"">VOLVER ATRAS</button>
-
+    <a class="btn btn-success" href="{% url 'camionetas-listado' %}">Atras</a>
 </form>
 
 {% endblock %}
