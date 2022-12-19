@@ -1,0 +1,25 @@
+{% extends 'AppInicio/base.html' %}
+
+{% block titulo %} BUSQUEDA DE ANUNCIOS {% endblock %}
+
+{% block contenido %}
+
+<form method="get">
+
+    <p>
+        Marca de Moto: <input type="text" name="marca">
+    </p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% if listado_marcas %}
+
+    {% for Marcas in listado_marcas %}
+        {{Marcas.marca}}
+        {{Marcas.modelo}}
+        {{Marcas.anio_fabricacion}}
+        {{Marcas.foto}}
+
+    {% endfor %}
+{% endif %}
+{% endblock %}

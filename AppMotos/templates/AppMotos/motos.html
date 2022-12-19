@@ -1,0 +1,56 @@
+{% extends 'AppInicio/base.html' %}
+
+{% block titulo %} MOTOS EN VENTA {% endblock %}
+
+{% block contenido %}
+<nav class="navbar navbar-light bg-light static-top">
+    <div style="background-color: rgb(244, 218, 218)" class="container">
+        <a class="navbar-brand" href="{% url 'motos' %}">Crear Anuncio</a>
+        <a class="navbar-brand" href= "{% url 'motos-listado' %}">Ver todos los Anuncios</a> 
+        <a class="navbar-brand" href="{% url 'motos-buscar' %}">Buscar</a>
+        
+    </div>
+</nav>
+
+{% if form %}
+<h1>CREACION DE ANUNCIO DE VENTA</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form.as_p}}
+    <input type="submit" value="Guardar">
+    </form>
+{% endif %}
+
+
+
+{% if object_list %}
+
+<h1>LISTADO DE MOTOS DISPONIBLES</h1>
+
+    {% for moto in object_list %}
+    
+        <p>Marca: {{moto.marca}}</p>
+        <p>Modelo: {{moto.modelo}}</p>
+        <p>Año de Fabricacion: {{moto.anio_fabricacion}}</p>
+        <p>Kilometraje: {{moto.kilometraje}}</p>
+        <p>Precio: {{moto.precio}}</p>
+        <img src="{{moto.foto.url}}" alt="">
+
+        
+        <a  href="{% url 'motos-eliminar' motos.pk %}" type="submit" class="btn btn-warning">Eliminar</a>
+        <a  href="{% url 'motos-editar' motos.pk %}" type="submit" class="btn btn-primary">Editar</a>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{formulario.as_p}}
+           
+        </form>
+        
+        
+    {% endfor %}
+{% endif %}
+
+
+
+{% endblock %}
