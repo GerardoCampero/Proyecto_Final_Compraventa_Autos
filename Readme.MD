@@ -10,6 +10,7 @@
 - La AppInicio donde se muestra el inicio de la página.
 - La AppAutos donde se pueden ver, crear, editar y eliminar las publicaciones de los autos. 
 - Se creó la posibilidad de subir un avatar a cada perfil.
+- Grabación de video presentación
 
 # ROGERS MEZONES
 
