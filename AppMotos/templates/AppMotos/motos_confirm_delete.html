@@ -1,0 +1,17 @@
+{% extends 'AppInicio/base.html' %}
+
+{% block titulo %} ELIMINAR ANUNCIO {% endblock %}
+
+{% block contenido %}
+
+
+<form  method="post">
+    {% csrf_token %}
+
+    <p><strong> DESEA ELIMINAR EL REGISTRO: {{ object }} ?</strong></p>
+    <button type="submit" class="btn btn-danger">CONFIRMAR</button>
+    <button href="motos-listado" class="btn btn-success"">VOLVER ATRAS</button>
+
+</form>
+
+{% endblock %}

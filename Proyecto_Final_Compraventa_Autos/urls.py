@@ -29,6 +29,7 @@ urlpatterns = [
     path('pathapp/', include('AppInicio.urls')),
     path('camionetas/', include('AppCamionetas.urls')), #Rogers
     path('autos/', include('AppAutos.urls')),
+    path('motos/', include('AppMotos.urls')),
 
     
 
